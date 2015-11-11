@@ -1,0 +1,49 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Test App</title>
+    <link href="Style/bootstrap.css" rel="stylesheet" />
+    <link href="Style/angular-chart.css" rel="stylesheet" />
+    <link href="Style/style.css" rel="stylesheet" />
+</head>
+
+<body ng-app="testApp">
+
+    <div class="col-lg-6" ng-controller="TestAppController">
+        <!--tabs-->
+        <div id="tabs">
+            <ul class="tab-list">
+                <li ng-repeat="tab in tabs"
+                    ng-class="{active:isActiveTab(tab.url)}"
+                    ng-click="onClickTab(tab)">{{tab.title}}</li>
+            </ul>
+            <div id="mainView">
+                <div ng-include="currentTab"></div>
+            </div>
+        </div>
+    </div>
+
+    <!--scripts-->
+    <script type="text/ng-template" id="pie.tpl.html">
+        <div>
+            <div class="chart-container"><canvas class="chart chart-doughnut chart-xs ng-isolate-scope" chart-legend="true" chart-data="data" chart-labels="labels" chart-legend="false" width="523" height="261" style="width: 523px; height: 261px;"></canvas></div>
+        </div>
+    </script>
+    <script type="text/ng-template" id="table.tpl.html">
+        <table>
+            <tr ng-repeat="row in tableData">
+                <td ng-repeat="cell in row">{{cell}}</td>
+            </tr>
+        </table>
+    </script>
+
+    <script src="Scripts/angular.min.js"></script>
+    <script src="Scripts/Chart.min.js"></script>
+    <script src="Scripts/ui-bootstrap-tpls.min.js"></script>
+    <script src="Scripts/angular-chart.js"></script>
+    <script src="Scripts/angular.app.js"></script>
+    <script src="Scripts/angular.controller.js"></script>
+    <script src="Scripts/angular.service.js"></script>
+
+</body>
+</html>
